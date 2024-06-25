@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#logoH{
+   
+    -webkit-text-stroke: 2px #4A235A;
+}
+
+.btn{
+    width: 150px;
+    height: 60px;
+    border: 2px solid red;
+    border-radius: 20px;
+}
