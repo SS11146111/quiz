@@ -13,3 +13,10 @@
     border: 2px solid red;
     border-radius: 20px;
 }
+
+.rowStyle{
+    font-size: medium;
+    margin: 25px;
+    padding: 5px;
+    
+}

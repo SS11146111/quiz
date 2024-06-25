@@ -1,12 +1,19 @@
 document.getElementById("btnNew").addEventListener("click",
     function(){    
         document.getElementById("intro").style.display = "none"
+        document.getElementById("game").style.display = "block"
+        document.getElementById("next").style.display = "block"
+
+        document.body.style.background = "yellow"
         displayQuiz();
     }
 )
 
 function displayQuiz()
 {
+    questions = [];
+    options = [];
+    answers = [];
     /*Promise.race(fetch('https://quizapi.io/api/v1/questions?apiKey=S3QArPby4cid5g0QQInNpyh6OAwguWMVUv5LlGiC&category=Linux'),
         new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error("Operation timed out")), 10000);
@@ -32,20 +39,55 @@ function displayQuiz()
     })
     .then(json => {
        
-        questions = [];
-        options = [];
-        answers = [];
+        i=1;
 
         json.forEach(obj => {
             questions.push(obj.question);
             options.push(obj.answers);
-            answers.push(obj.correct_answer);
+            if(obj.correct_answer == "answer_a")
+                answers.push("A")
+            else if(obj.correct_answer == "answer_b")
+                answers.push("B")
+            else if(obj.correct_answer == "answer_c")
+                answers.push("C")
+            else if(obj.correct_answer == "answer_d")
+                answers.push("D")
+            else if(obj.correct_answer == "answer_e")
+                answers.push("E")
+            else if(obj.correct_answer == "answer_f")
+                answers.push("F")
         });
+
+        document.getElementById("question").innerHTML= questions[0];
+        document.getElementById("optionTbl").innerHTML = "<tr class='rowStyle'><td>A)</td><td>"+options[0].answer_a+"</td></tr>"+
+                                                         "<tr class='rowStyle'><td>B)</td><td>"+options[0].answer_b+"</td></tr>"+
+                                                         "<tr class='rowStyle'><td>C)</td><td>"+options[0].answer_c+"</td></tr>"+
+                                                         "<tr class='rowStyle'><td>D)</td><td>"+options[0].answer_d+"</td></tr>"+
+                                                         "<tr class='rowStyle'><td>E)</td><td>"+options[0].answer_e+"</td></tr>"+
+                                                         "<tr class='rowStyle'><td>F)</td><td>"+options[0].answer_f+"</td></tr>";
+
+
+        document.getElementById("next").addEventListener("click",
+            function()
+            {
+                document.getElementById("question").innerHTML = questions[i];
+                document.getElementById("optionTbl").innerHTML =    "<tr class='rowStyle'><td>A)</td><td>"+options[i].answer_a+"</td></tr>"+
+                                                                    "<tr class='rowStyle'><td>B)</td><td>"+options[i].answer_b+"</td></tr>"+
+                                                                    "<tr class='rowStyle'><td>C)</td><td>"+options[i].answer_c+"</td></tr>"+
+                                                                    "<tr class='rowStyle'><td>D)</td><td>"+options[i].answer_d+"</td></tr>"+
+                                                                    "<tr class='rowStyle'><td>E)</td><td>"+options[i].answer_e+"</td></tr>"+
+                                                                    "<tr class='rowStyle'><td>F)</td><td>"+options[i].answer_f+"</td></tr>";
+
+                i=i+1;
+            }
+        )
        
     })
     .catch((error)=>{
         console.log(error.message)
     })
+
+
 }
 
 

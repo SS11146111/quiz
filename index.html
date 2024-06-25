@@ -26,12 +26,50 @@
         <img src="/images/menu.png" alt="menu" height="40" width="40">      
     </nav>
 
-    <div id="intro" class="m-2 absolute left-[480px]">
+    <div id="intro" class="m-2 absolute left-[470px]">
         <img id="introImg" src="/images/background.png" alt="menu" width="580">
         <button id="btnNew" class = "btn absolute left-[100px] top-[420px] bg-white font-bold hover:bg-gray-200">New Game</button>
         <button id="btnRes" class = "btn absolute left-[330px] top-[420px] bg-white font-bold hover:bg-gray-200">Resume Game</button>
         <button id="btnIns" class = "btn absolute left-[100px] top-[510px] bg-white font-bold hover:bg-gray-200">Instructions</button>
         <button id="btnAbt" class = "btn absolute left-[330px] top-[510px] bg-white font-bold hover:bg-gray-200">About</button>
+    </div>
+
+    <div id="game" class="hidden relative left-[100px] bg-white w-[1350px] mt-[50px]">
+        <div class="font-bold text-3xl m-2 pt-3 flex flex-row">Q)<p id="question"></p></div>
+        <div id="option" class="">
+            <table id="optionTbl" class="m-4 text-left"></table>
+        </div>
+        <div class="flex flex-row justify-between">
+            <div id="choose" class="flex flex-row">
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="a" name="ans" value="a">
+                    <label for="a" class="text-white text-xl">A</label>
+                </div>
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="b" name="ans" value="b">
+                    <label for="b"  class="text-white text-xl">B</label>
+                </div>
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="c" name="ans" value="c">
+                    <label for="c" class="text-white text-xl">C</label>
+                </div>
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="d" name="ans" value="d">
+                    <label for="d" class="text-white text-xl">D</label>
+                </div>
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="e" name="ans" value="e">
+                    <label for="e"  class="text-white text-xl">E</label>
+                </div>
+                <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
+                    <input type="radio" id="f" name="ans" value="f">
+                    <label for="f"  class="text-white text-xl">F</label>
+                </div>
+            </div>
+            <button id="next" class="hidden bg-[rgb(66,67,134)] text-white font-bold h-8 mt-6 mr-2 rounded-md p-[4px]">Next</button>
+        </div>
+        
+        
     </div>
 
     <script src="js/newGame.js"></script>
