@@ -10,9 +10,7 @@
 
     <link rel="icon" type="image/x-icon" href="/images/quiz.png">
     <link rel="stylesheet" href="/css/output.css">
-    <!--
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Get Set GO!!</title>
 </head>
@@ -28,13 +26,14 @@
         <img src="/images/menu.png" alt="menu" height="40" width="40">      
     </nav>
 
-    <div class="m-2 absolute left-[480px]">
-        <img src="/images/background.png" alt="menu" width="580">    
+    <div id="intro" class="m-2 absolute left-[480px]">
+        <img id="introImg" src="/images/background.png" alt="menu" width="580">
+        <button id="btnNew" class = "btn absolute left-[100px] top-[420px] bg-white font-bold hover:bg-gray-200">New Game</button>
+        <button id="btnRes" class = "btn absolute left-[330px] top-[420px] bg-white font-bold hover:bg-gray-200">Resume Game</button>
+        <button id="btnIns" class = "btn absolute left-[100px] top-[510px] bg-white font-bold hover:bg-gray-200">Instructions</button>
+        <button id="btnAbt" class = "btn absolute left-[330px] top-[510px] bg-white font-bold hover:bg-gray-200">About</button>
     </div>
-    <button class = "btn absolute left-[590px] top-[510px] bg-white font-bold hover:bg-gray-200">New Game</button>
-    <button class = "btn absolute left-[810px] top-[510px] bg-white font-bold hover:bg-gray-200">Resume Game</button>
-    <button class = "btn absolute left-[590px] top-[600px] bg-white font-bold hover:bg-gray-200">Instructions</button>
-    <button class = "btn absolute left-[810px] top-[600px] bg-white font-bold hover:bg-gray-200">About</button>
-    
+
+    <script src="js/newGame.js"></script>
 </body>
 </html>
