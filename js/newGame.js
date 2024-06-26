@@ -14,6 +14,7 @@ function displayQuiz()
     questions = [];
     options = [];
     answers = [];
+    attempted = [];
     /*Promise.race(fetch('https://quizapi.io/api/v1/questions?apiKey=S3QArPby4cid5g0QQInNpyh6OAwguWMVUv5LlGiC&category=Linux'),
         new Promise((resolve, reject) => {
         setTimeout(() => reject(new Error("Operation timed out")), 10000);
@@ -39,7 +40,7 @@ function displayQuiz()
     })
     .then(json => {
        
-        i=1;
+        i=0;
 
         json.forEach(obj => {
             questions.push(obj.question);
@@ -58,18 +59,10 @@ function displayQuiz()
                 answers.push("F")
         });
 
-        document.getElementById("question").innerHTML= questions[0];
-        document.getElementById("optionTbl").innerHTML = "<tr class='rowStyle'><td>A)</td><td>"+options[0].answer_a+"</td></tr>"+
-                                                         "<tr class='rowStyle'><td>B)</td><td>"+options[0].answer_b+"</td></tr>"+
-                                                         "<tr class='rowStyle'><td>C)</td><td>"+options[0].answer_c+"</td></tr>"+
-                                                         "<tr class='rowStyle'><td>D)</td><td>"+options[0].answer_d+"</td></tr>"+
-                                                         "<tr class='rowStyle'><td>E)</td><td>"+options[0].answer_e+"</td></tr>"+
-                                                         "<tr class='rowStyle'><td>F)</td><td>"+options[0].answer_f+"</td></tr>";
-
-
         document.getElementById("next").addEventListener("click",
             function()
             {
+                document.getElementById("result").src = "/images/question.png";
                 document.getElementById("question").innerHTML = questions[i];
                 document.getElementById("optionTbl").innerHTML =    "<tr class='rowStyle'><td>A)</td><td>"+options[i].answer_a+"</td></tr>"+
                                                                     "<tr class='rowStyle'><td>B)</td><td>"+options[i].answer_b+"</td></tr>"+
@@ -79,6 +72,31 @@ function displayQuiz()
                                                                     "<tr class='rowStyle'><td>F)</td><td>"+options[i].answer_f+"</td></tr>";
 
                 i=i+1;
+
+                document.getElementById("buzzer").addEventListener("click",
+                    function(){
+                        var ele = document.getElementsByName("ans");
+                        for (j = 0; j < ele.length; j++) {
+                            if (ele[j].checked)
+                            {
+                               attempted.push(ele[j].value)
+
+                               if(ele[j].value == answers[i])
+                                {
+                                    document.getElementById("result").src = "/images/check.png";
+                                    
+                                }
+                                else
+                                {
+                                    document.getElementById("result").src = "/images/cross.png";
+                                }
+
+                            }
+                        }
+
+                    }
+                )
+                
             }
         )
        
