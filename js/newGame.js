@@ -3,22 +3,33 @@ document.getElementById("btnNew").addEventListener("click",
         document.getElementById("intro").style.display = "none"
         document.getElementById("game").style.display = "block"
         document.getElementById("next").style.display = "block"
-
-        document.body.style.background = "yellow"
-        displayQuiz();
+       
     }
 )
 
-function displayQuiz()
+document.getElementById("next").addEventListener("click",
+    function(){    
+        document.getElementById("note").style.display = "none"
+        document.getElementById("game").style.display = "block"
+        document.getElementById("next").style.display = "block"
+        document.getElementById("next").innerHTML = "NEXT"
+        document.getElementById("playBtn").style.display = "block"
+        document.getElementById("next").style.display = "none"
+         document.getElementById("shift").style.display = "block"
+        fetchQuiz();
+       
+    }
+)
+
+
+
+function fetchQuiz()
 {
     questions = [];
     options = [];
     answers = [];
     attempted = [];
-    /*Promise.race(fetch('https://quizapi.io/api/v1/questions?apiKey=S3QArPby4cid5g0QQInNpyh6OAwguWMVUv5LlGiC&category=Linux'),
-        new Promise((resolve, reject) => {
-        setTimeout(() => reject(new Error("Operation timed out")), 10000);
-    }))*/
+   
    
     fetch('https://quizapi.io/api/v1/questions?apiKey=S3QArPby4cid5g0QQInNpyh6OAwguWMVUv5LlGiC&category=Linux')
     .then(res =>{
@@ -59,10 +70,20 @@ function displayQuiz()
                 answers.push("F")
         });
 
-        document.getElementById("next").addEventListener("click",
+        
+        document.getElementById("shift").addEventListener("click",
             function()
             {
-                document.getElementById("result").src = "/images/question.png";
+                document.getElementById("a").disabled = false;
+                document.getElementById("b").disabled = false;
+                document.getElementById("c").disabled = false;
+                document.getElementById("d").disabled = false;
+                document.getElementById("e").disabled = false;
+                document.getElementById("f").disabled = false;
+
+                document.getElementById("qContainer").style.display = "block"
+                document.getElementById("qContent").style.display = "flex"
+                document.getElementById("result").src = "/images/time.png";
                 document.getElementById("question").innerHTML = questions[i];
                 document.getElementById("optionTbl").innerHTML =    "<tr class='rowStyle'><td>A)</td><td>"+options[i].answer_a+"</td></tr>"+
                                                                     "<tr class='rowStyle'><td>B)</td><td>"+options[i].answer_b+"</td></tr>"+
@@ -71,16 +92,36 @@ function displayQuiz()
                                                                     "<tr class='rowStyle'><td>E)</td><td>"+options[i].answer_e+"</td></tr>"+
                                                                     "<tr class='rowStyle'><td>F)</td><td>"+options[i].answer_f+"</td></tr>";
 
-                i=i+1;
+                if(i<questions.length)
+                    i=i+1;
+                if(i>=questions.length)
+                    {
+                        document.getElementById("shift").disabled = true;
+                        questions = [];
+                        options = [];
+                        answers = [];
+                        attempted = [];
+                    }
+                    
+
+
 
                 document.getElementById("buzzer").addEventListener("click",
                     function(){
+                        document.getElementById("a").disabled = true;
+                        document.getElementById("b").disabled = true;
+                        document.getElementById("c").disabled = true;
+                        document.getElementById("d").disabled = true;
+                        document.getElementById("e").disabled = true;
+                        document.getElementById("f").disabled = true;
+
                         var ele = document.getElementsByName("ans");
                         for (j = 0; j < ele.length; j++) {
                             if (ele[j].checked)
                             {
                                attempted.push(ele[j].value)
 
+                
                                if(ele[j].value == answers[i])
                                 {
                                     document.getElementById("result").src = "/images/check.png";
@@ -90,13 +131,12 @@ function displayQuiz()
                                 {
                                     document.getElementById("result").src = "/images/cross.png";
                                 }
-
+                
                             }
                         }
-
                     }
                 )
-                
+
             }
         )
        
@@ -105,9 +145,5 @@ function displayQuiz()
         console.log(error.message)
     })
 
-
 }
-
-
-
 

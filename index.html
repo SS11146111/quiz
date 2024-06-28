@@ -14,10 +14,11 @@
 
     <title>Get Set GO!!</title>
 </head>
+
 <body>
     <nav class="bg-gradient-to-b from-[rgb(66,67,134)] via-[rgb(104,105,188)] to-[rgb(66,67,134)] text-center p-4 z-40 flex justify-between w-[375px] h-[80px] md:w-[768px] md:h-[80px] lg:w-[1024px] lg:h-[80px] xl:w-[1280px] xl:h-[80px] 2xl:w-[1536px] 2xl:h-[80px] ">
         <img src="/images/logo.png" alt="logo">
-        <!--heading-->
+        
         <div class="mb-[2px]">
             <h1 class="text-white font-bold text-2xl 2xl:text-4xl" id="logoH">Get Set Go!!</h1> 
             <h6 class="text-yellow-300" >Online Quiz</h6>
@@ -34,13 +35,23 @@
         <button id="btnAbt" class = "btn absolute left-[330px] top-[510px] bg-white font-bold hover:bg-gray-200">About</button>
     </div>
 
-    <div id="game" class="hidden relative left-[100px] bg-white w-[1350px] mt-[50px]">
-        <div class="font-bold text-3xl m-2 pt-3 flex flex-row">Q)<p id="question"></p></div>
+    <div id="qContainer" class="border-black border-8 border-solid rounded-md bg-gray-200 hidden relative m-14">
+        <div id="qContent" class="font-bold text-3xl m-2 pt-3 flex-row hidden"><p class="text-[rgb(66,67,134)]">Q) </p><p id="question"></p></div>
         <div id="option" class="">
             <table id="optionTbl" class="m-4 text-left"></table>
         </div>
-        <div class="flex flex-row justify-between">
-            <div id="choose" class="flex flex-row">
+    </div>
+
+    <div id="game" class="hidden relative  left-[100px] w-[1350px] mt-[50px] h-auto">
+
+        <div id="note" class="relative top-[40px]">
+            <img src="/images/desktop.png" alt="note" width="400" class="absolute left-[480px]">
+            <img src="/images/teacher.png" alt="teacher" width="100" class="absolute left-[560px] top-[300px]">
+            <div class="absolute left-[600px] top-[100px] w-[200px] break-words font-bold text-xl">To start the game click on START...</div>
+        </div>
+
+        <div id="playBtn" class="flex-row justify-between relative hidden">
+            <div id="choose" class="flex flex-row fixed left-[540px] top-[530px] z-10">
                 <div class="bg-red-600 w-[50px] rounded-md m-2 p-2">
                     <input type="radio" id="a" name="ans" value="A">
                     <label for="a" class="text-white text-xl">A</label>
@@ -66,15 +77,16 @@
                     <label for="f"  class="text-white text-xl">F</label>
                 </div>
             </div>
-            <div id="buzzer-result" class="flex flex-row">
-                <img id="buzzer" src="/images/buzzer.png" alt="buzzer" width="60" class="m-2">
-                <img id="equal" src="/images/equal.png" alt="equal" width="30" class="m-2">
-                <img id="result" src="/images/question.png" alt="result" width="60" class="m-2">
+           
+            <div>
+                <button id="buzzer" class="m-2 fixed top-[520px] left-[930px] z-20"><img src="/images/buzzer.png" alt="buzzer" width="60"></button>
+                <img id="result" src="/images/time.png" alt="result" width="40" class="m-2 fixed top-[480px] left-[940px] animate-spin">
+                <img id="table" src="/images/table.png" alt="table" width="500" class="m-2 fixed top-[480px] left-[520px]">
+                <button id="shift" class="animate-bounce hidden mb-6 mr-6 m-2 fixed left-[1000px] top-[580px]"><img src="/images/next.png" width="40"></button>
             </div>
-            <button id="next" class="hidden bg-[rgb(66,67,134)] text-white font-bold h-8 mt-6 mr-2 rounded-md p-[4px]">Next</button>
         </div>
-        
-        
+
+        <button id="next" class="animate-bounce hidden bg-[rgb(66,67,134)] text-white font-bold h-8 mb-6 mr-6 rounded-md p-[4px] fixed bottom-0 right-0">START</button>
     </div>
 
     <script src="js/newGame.js"></script>
