@@ -1,3 +1,5 @@
+score=0;
+
 document.getElementById("btnNew").addEventListener("click",
     function(){    
         document.getElementById("intro").style.display = "none"
@@ -15,7 +17,8 @@ document.getElementById("next").addEventListener("click",
         document.getElementById("next").innerHTML = "NEXT"
         document.getElementById("playBtn").style.display = "block"
         document.getElementById("next").style.display = "none"
-         document.getElementById("shift").style.display = "block"
+        document.getElementById("shift").style.display = "block"
+        document.getElementById("best").style.display = "block"
         fetchQuiz();
        
     }
@@ -81,6 +84,7 @@ function fetchQuiz()
                 document.getElementById("e").disabled = false;
                 document.getElementById("f").disabled = false;
 
+                document.getElementById("best").style.display = "none"
                 document.getElementById("qContainer").style.display = "block"
                 document.getElementById("qContent").style.display = "flex"
                 document.getElementById("result").src = "/images/time.png";
@@ -101,6 +105,7 @@ function fetchQuiz()
                         options = [];
                         answers = [];
                         attempted = [];
+                        alert(score)
                     }
                     
 
@@ -108,6 +113,7 @@ function fetchQuiz()
 
                 document.getElementById("buzzer").addEventListener("click",
                     function(){
+                        
                         document.getElementById("a").disabled = true;
                         document.getElementById("b").disabled = true;
                         document.getElementById("c").disabled = true;
@@ -124,6 +130,7 @@ function fetchQuiz()
                 
                                if(ele[j].value == answers[i])
                                 {
+                                    score++;
                                     document.getElementById("result").src = "/images/check.png";
                                     
                                 }
@@ -146,4 +153,6 @@ function fetchQuiz()
     })
 
 }
+
+
 
